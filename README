@@ -1,0 +1,35 @@
+# GraphQL Testing Grounds
+
+Desc
+
+--
+dependencies:
+npm install @apollo/server graphql
+
+To run, type: node index.js
+The server will be ran on the URL http://localhost:4000/
+
+You can add a person to the server with a mutation:
+mutation {
+    addPerson(
+        name: "Your Name"
+        phone: "42-5235"
+        street: "Example Ave"
+        city: "NewFoundLand"
+        zip_code: "3421"
+    ) {
+        name
+        phone
+        address {
+            city
+            street
+            zip_code
+        }
+        id
+    }
+}
+A unique ID will be generated for every mutation using the 'uuid' library
+The person is saved into the persons array using the provided parameters.
+
+The resolver for each type is responsible for telling the Apollo server
+how it should populate each field (e.g. name, phone)
